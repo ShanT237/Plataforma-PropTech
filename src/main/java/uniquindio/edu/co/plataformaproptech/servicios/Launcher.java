@@ -1,4 +1,4 @@
-package uniquindio.edu.co.plataformaproptech;
+package uniquindio.edu.co.plataformaproptech.servicios;
 
 import javafx.application.Application;
 

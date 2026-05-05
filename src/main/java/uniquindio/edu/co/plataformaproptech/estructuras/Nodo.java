@@ -1,4 +1,4 @@
-package uniquindio.edu.co.plataformaproptech.estruturas;
+package uniquindio.edu.co.plataformaproptech.estructuras;
 
 public class Nodo<T> {
     public T dato;

@@ -5,4 +5,8 @@ module uniquindio.edu.co.plataformaproptech {
 
     opens uniquindio.edu.co.plataformaproptech to javafx.fxml;
     exports uniquindio.edu.co.plataformaproptech;
+    exports uniquindio.edu.co.plataformaproptech.repositorios;
+    opens uniquindio.edu.co.plataformaproptech.repositorios to javafx.fxml;
+    exports uniquindio.edu.co.plataformaproptech.servicios;
+    opens uniquindio.edu.co.plataformaproptech.servicios to javafx.fxml;
 }

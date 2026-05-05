@@ -1,4 +1,4 @@
-package uniquindio.edu.co.plataformaproptech.estruturas;
+package uniquindio.edu.co.plataformaproptech.estructuras;
 
 import java.util.ArrayList;
 import java.util.List;
