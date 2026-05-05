@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaInmueblesController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <!-- Encabezado -->
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Gestión de Inmuebles"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Registra, edita y consulta los inmuebles de la plataforma"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <!-- Barra de acciones -->
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="+ Nuevo Inmueble" onAction="#abrirFormularioNuevo"
+                        style="-fx-background-color: #1abc9c; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 8; -fx-padding: 10 20 10 20;
+                               -fx-cursor: hand;"/>
+                <Button text="Editar" onAction="#editarInmueble"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="Eliminar" onAction="#eliminarInmueble"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="Deshacer cambio" onAction="#deshacerCambio"
+                        style="-fx-background-color: #7f8c8d; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="← Inicio" onAction="#volverAlInicio"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+               -fx-font-size: 13px; -fx-cursor: hand;
+               -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+               -fx-padding: 10 16 10 16;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar" promptText="Buscar por código..."
+                           prefWidth="200"
+                           style="-fx-background-radius: 8; -fx-padding: 8 12 8 12;
+                                  -fx-font-size: 13px;"/>
+                <Button text="Buscar" onAction="#buscarInmueble"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 16 10 16; -fx-cursor: hand;"/>
+            </HBox>
+
+            <!-- Filtros -->
+            <HBox spacing="12" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 14 20 14 20;
+                         -fx-background-radius: 10;">
+                <Label text="Filtrar por:"
+                       style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="cmbTipo" promptText="Tipo"
+                          prefWidth="130" style="-fx-font-size: 12px;"/>
+                <ComboBox fx:id="cmbFinalidad" promptText="Finalidad"
+                          prefWidth="130" style="-fx-font-size: 12px;"/>
+                <ComboBox fx:id="cmbEstado" promptText="Estado"
+                          prefWidth="130" style="-fx-font-size: 12px;"/>
+                <TextField fx:id="txtPrecioMin" promptText="Precio mín"
+                           prefWidth="110" style="-fx-font-size: 12px; -fx-background-radius: 6;"/>
+                <TextField fx:id="txtPrecioMax" promptText="Precio máx"
+                           prefWidth="110" style="-fx-font-size: 12px; -fx-background-radius: 6;"/>
+                <Button text="Aplicar" onAction="#aplicarFiltros"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 12px; -fx-background-radius: 6;
+                               -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+                <Button text="Limpiar" onAction="#limpiarFiltros"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 12px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 6;
+                               -fx-padding: 8 14 8 14;"/>
+            </HBox>
+
+            <!-- Tabla -->
+            <TableView fx:id="tablaInmuebles" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colCodigo" text="Código" prefWidth="90"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+                    <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="180"/>
+                    <TableColumn fx:id="colCiudad" text="Ciudad" prefWidth="100"/>
+                    <TableColumn fx:id="colFinalidad" text="Finalidad" prefWidth="90"/>
+                    <TableColumn fx:id="colPrecio" text="Precio" prefWidth="110"/>
+                    <TableColumn fx:id="colHabitaciones" text="Hab." prefWidth="50"/>
+                    <TableColumn fx:id="colEstado" text="Estado" prefWidth="110"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay inmuebles registrados"
+                           style="-fx-text-fill: #BDC8D1; -fx-font-size: 13px;"/>
+                </placeholder>
+            </TableView>
+
+        </VBox>
+    </center>
+
+    <!-- Pie -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: white; -fx-padding: 12 30 12 30;
+                     -fx-border-color: #E0E4E8; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="lblTotal" text="Total: 0 inmuebles"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

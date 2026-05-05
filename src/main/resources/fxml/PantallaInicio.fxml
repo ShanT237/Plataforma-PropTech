@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaInicioController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <!-- Sidebar izquierdo -->
+    <left>
+        <VBox prefWidth="220" prefHeight="680"
+              style="-fx-background-color: #1B2A3B; -fx-padding: 0;">
+
+            <!-- Logo -->
+            <VBox alignment="CENTER" style="-fx-padding: 30 20 30 20; -fx-background-color: #142033;">
+                <Label text="PropTech"
+                       style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Gestión Inmobiliaria"
+                       style="-fx-font-size: 11px; -fx-text-fill: #7F8C9A; -fx-padding: 4 0 0 0;"/>
+            </VBox>
+
+            <Separator style="-fx-background-color: #2C3E50;"/>
+
+            <!-- Sección principal -->
+            <Label text="MÓDULOS PRINCIPALES"
+                   style="-fx-font-size: 10px; -fx-text-fill: #5D7A8A;
+                          -fx-padding: 20 20 8 20; -fx-font-weight: bold;"/>
+
+            <Button text="  Inmuebles" prefWidth="220" prefHeight="44"
+                    onAction="#abrirInmuebles"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button text="  Clientes" prefWidth="220" prefHeight="44"
+                    onAction="#abrirClientes"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button text="  Asesores" prefWidth="220" prefHeight="44"
+                    onAction="#abrirAsesores"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button text="  Visitas" prefWidth="220" prefHeight="44"
+                    onAction="#abrirVisitas"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Separator style="-fx-background-color: #2C3E50;"/>
+
+            <!-- Sección análisis -->
+            <Label text="ANÁLISIS Y REPORTES"
+                   style="-fx-font-size: 10px; -fx-text-fill: #5D7A8A;
+                          -fx-padding: 20 20 8 20; -fx-font-weight: bold;"/>
+
+            <Button text="  Alertas" prefWidth="220" prefHeight="44"
+                    onAction="#abrirAlertas"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button text="  Recomendaciones" prefWidth="220" prefHeight="44"
+                    onAction="#abrirRecomendaciones"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button text="  Reportes" prefWidth="220" prefHeight="44"
+                    onAction="#abrirReportes"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button text="  Comportamiento" prefWidth="220" prefHeight="44"
+                    onAction="#abrirComportamiento"
+                    style="-fx-background-color: transparent; -fx-text-fill: #BDC8D1;
+                           -fx-font-size: 13px; -fx-alignment: CENTER-LEFT;
+                           -fx-padding: 0 0 0 20; -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <!-- Espaciador -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Versión -->
+            <Label text="v1.0.0 - 2026"
+                   style="-fx-font-size: 10px; -fx-text-fill: #3D5166;
+                          -fx-padding: 16 20 16 20;"/>
+        </VBox>
+    </left>
+
+    <!-- Contenido principal -->
+    <center>
+        <VBox style="-fx-padding: 40 40 40 40;" spacing="30">
+
+            <!-- Encabezado -->
+            <VBox spacing="4">
+                <Label text="Panel de Control"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                <Label text="Bienvenido a la plataforma de gestión inmobiliaria inteligente"
+                       style="-fx-font-size: 13px; -fx-text-fill: #7F8C9A;"/>
+            </VBox>
+
+            <!-- Tarjetas de resumen -->
+            <HBox spacing="20">
+
+                <VBox prefWidth="170" prefHeight="100" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+             -fx-background-radius: 10;
+             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+                    <Label text="INMUEBLES"
+                           style="-fx-font-size: 11px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalInmuebles" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1abc9c;"/>
+                    <Label text="Activos en el sistema"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1;"/>
+                    <Label text="Ver módulo →"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1; -fx-cursor: hand;"
+                           onMouseClicked="#abrirInmuebles"/>
+                </VBox>
+
+                <VBox prefWidth="170" prefHeight="100" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+             -fx-background-radius: 10;
+             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+                    <Label text="CLIENTES"
+                           style="-fx-font-size: 11px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalClientes" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                    <Label text="Registrados"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1;"/>
+                    <Label text="Ver módulo →"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1; -fx-cursor: hand;"
+                           onMouseClicked="#abrirClientes"/>
+                </VBox>
+
+                <VBox prefWidth="170" prefHeight="100" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+             -fx-background-radius: 10;
+             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+                    <Label text="VISITAS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalVisitas" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #e67e22;"/>
+                    <Label text="Pendientes"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1;"/>
+                    <Label text="Ver módulo →"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1; -fx-cursor: hand;"
+                           onMouseClicked="#abrirVisitas"/>
+                </VBox>
+
+                <VBox prefWidth="170" prefHeight="100" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+             -fx-background-radius: 10;
+             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+                    <Label text="ALERTAS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalAlertas" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                    <Label text="Sin revisar"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1;"/>
+                    <Label text="Ver módulo →"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1; -fx-cursor: hand;"
+                           onMouseClicked="#abrirAlertas"/>
+                </VBox>
+            </HBox>
+
+            <!-- Accesos rápidos -->
+            <VBox spacing="12">
+                <Label text="Accesos rápidos"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+
+                <GridPane hgap="16" vgap="16">
+                    <Button text="Registrar Inmueble" prefWidth="185" prefHeight="50"
+                            onAction="#abrirInmuebles" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                            style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    <Button text="Nuevo Cliente" prefWidth="185" prefHeight="50"
+                            onAction="#abrirClientes" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                            style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    <Button text="Agendar Visita" prefWidth="185" prefHeight="50"
+                            onAction="#abrirVisitas" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                            style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    <Button text="Ver Alertas" prefWidth="185" prefHeight="50"
+                            onAction="#abrirAlertas" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    <Button text="Recomendaciones" prefWidth="185" prefHeight="50"
+                            onAction="#abrirRecomendaciones" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                            style="-fx-background-color: #8e44ad; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    <Button text="Ver Reportes" prefWidth="185" prefHeight="50"
+                            onAction="#abrirReportes" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                </GridPane>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
