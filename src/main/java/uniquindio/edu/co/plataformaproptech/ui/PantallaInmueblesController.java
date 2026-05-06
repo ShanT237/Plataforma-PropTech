@@ -183,9 +183,9 @@ public class PantallaInmueblesController implements Initializable {
             stage.setTitle(inmueble == null ? "Nuevo Inmueble" : "Editar Inmueble");
             stage.setScene(new Scene(root));
             stage.setMinWidth(1024);
-            stage.setMinHeight(800);
+            stage.setMinHeight(600);
             stage.setWidth(1024);
-            stage.setHeight(800);
+            stage.setHeight(700);
             stage.initOwner(Navegador.getStage());
             stage.initModality(javafx.stage.Modality.WINDOW_MODAL);
             stage.centerOnScreen();

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.FormularioVisitaController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Nueva Visita"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Completa los datos para programar la visita"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="16" style="-fx-padding: 30;">
+
+                <HBox spacing="16">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="ID de la visita *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtId" promptText="Ej: VIS-001"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Estado *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <ComboBox fx:id="cmbEstado" prefWidth="999"
+                                  style="-fx-font-size: 13px;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="16">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="ID Cliente *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtIdCliente" promptText="Ej: 1234567890"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Código Inmueble *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtCodigoInmueble" promptText="Ej: INM-001"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="16">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="ID Asesor *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtIdAsesor" promptText="Ej: AS-001"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="¿Visita urgente?"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                            <CheckBox fx:id="chkUrgente"/>
+                            <Label text="Marcar como urgente (prioridad)"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #1B2A3B;"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="16">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Fecha *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <DatePicker fx:id="dateFecha" prefWidth="999"
+                                    style="-fx-font-size: 13px;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Hora *"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtHora" promptText="Ej: 10:30"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                        <Label text="Formato: HH:MM"
+                               style="-fx-font-size: 11px; -fx-text-fill: #BDC8D1;"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="6">
+                    <Label text="Observaciones"
+                           style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                    <TextArea fx:id="txtObservaciones" promptText="Notas adicionales sobre la visita..."
+                              prefHeight="80"
+                              style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="12" alignment="CENTER_RIGHT"
+              style="-fx-background-color: white; -fx-padding: 16 30 16 30;
+                     -fx-border-color: #E0E4E8; -fx-border-width: 1 0 0 0;">
+            <Button text="Cancelar" onAction="#cancelar"
+                    style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                           -fx-font-size: 13px; -fx-cursor: hand;
+                           -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                           -fx-padding: 10 20 10 20;"/>
+            <Button text="Programar Visita" onAction="#guardar"
+                    style="-fx-background-color: #e67e22; -fx-text-fill: white;
+                           -fx-font-size: 13px; -fx-font-weight: bold;
+                           -fx-background-radius: 8; -fx-padding: 10 28 10 28;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

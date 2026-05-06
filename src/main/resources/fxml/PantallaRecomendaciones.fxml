@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaRecomendacionesController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Recomendaciones de Inmuebles"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Sugerencias personalizadas basadas en el perfil del cliente"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Inicio" onAction="#volverAlInicio"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 13px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                               -fx-padding: 10 16 10 16;"/>
+            </HBox>
+
+            <!-- Panel de búsqueda -->
+            <VBox spacing="16"
+                  style="-fx-background-color: white; -fx-padding: 24;
+                         -fx-background-radius: 10;">
+
+                <Label text="Buscar recomendaciones"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="ID del cliente"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtIdCliente" promptText="Ej: 1234567890"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Código de inmueble similar"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <TextField fx:id="txtCodigoInmueble" promptText="Ej: INM-001"
+                                   style="-fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 13px;"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="12">
+                    <Button text="Recomendar por perfil" onAction="#recomendarPorPerfil"
+                            style="-fx-background-color: #8e44ad; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-font-weight: bold;
+                                   -fx-background-radius: 8; -fx-padding: 10 20 10 20;
+                                   -fx-cursor: hand;"/>
+                    <Button text="Recomendar por historial" onAction="#recomendarPorHistorial"
+                            style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8;
+                                   -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                    <Button text="Inmuebles similares" onAction="#recomendarSimilares"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white;
+                                   -fx-font-size: 13px; -fx-background-radius: 8;
+                                   -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                    <Button text="Limpiar" onAction="#limpiar"
+                            style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                                   -fx-font-size: 13px; -fx-cursor: hand;
+                                   -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                                   -fx-padding: 10 20 10 20;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Resultados -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT">
+                    <Label fx:id="lblTipoRecomendacion" text="Resultados"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="0 inmuebles encontrados"
+                           style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+                </HBox>
+
+                <TableView fx:id="tablaResultados" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: white; -fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
+                        <TableColumn fx:id="colTipo" text="Tipo" prefWidth="130"/>
+                        <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="200"/>
+                        <TableColumn fx:id="colCiudad" text="Ciudad" prefWidth="110"/>
+                        <TableColumn fx:id="colFinalidad" text="Finalidad" prefWidth="100"/>
+                        <TableColumn fx:id="colPrecio" text="Precio" prefWidth="120"/>
+                        <TableColumn fx:id="colHabitaciones" text="Hab." prefWidth="60"/>
+                        <TableColumn fx:id="colEstado" text="Estado" prefWidth="110"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Ingresa un ID de cliente o código de inmueble para ver recomendaciones"
+                               style="-fx-text-fill: #BDC8D1; -fx-font-size: 13px;"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

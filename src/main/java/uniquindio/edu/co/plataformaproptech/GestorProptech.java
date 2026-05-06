@@ -13,6 +13,7 @@ import uniquindio.edu.co.plataformaproptech.servicios.ServicioGrafo;
 import uniquindio.edu.co.plataformaproptech.servicios.ServicioInmuebles;
 import uniquindio.edu.co.plataformaproptech.servicios.ServicioRecomendacion;
 import uniquindio.edu.co.plataformaproptech.servicios.ServicioVisitas;
+import uniquindio.edu.co.plataformaproptech.servicios.ServicioAsesores;
 
 public class GestorProptech {
 
@@ -32,6 +33,7 @@ public class GestorProptech {
     private final ServicioAlertas servicioAlertas;
     private final ServicioGrafo servicioGrafo;
     private final DetectorComportamiento detectorComportamiento;
+    private final ServicioAsesores servicioAsesores;
 
     private GestorProptech() {
         repositorioInmuebles = new RepositorioInmuebles();
@@ -40,6 +42,7 @@ public class GestorProptech {
         repositorioVisitas = new RepositorioVisitas();
         repositorioOperaciones = new RepositorioOperaciones();
         repositorioAlertas = new RepositorioAlertas();
+        servicioAsesores = new ServicioAsesores(repositorioAsesores);
 
         servicioInmuebles = new ServicioInmuebles(repositorioInmuebles);
         servicioClientes = new ServicioClientes(repositorioClientes);
@@ -89,4 +92,5 @@ public class GestorProptech {
     public ServicioGrafo getServicioGrafo() { return servicioGrafo; }
     public DetectorComportamiento getDetectorComportamiento() { return detectorComportamiento; }
     public RepositorioOperaciones getRepositorioOperaciones() { return repositorioOperaciones; }
+    public ServicioAsesores getServicioAsesores() { return servicioAsesores; }
 }

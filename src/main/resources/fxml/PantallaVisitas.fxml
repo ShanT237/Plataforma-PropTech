@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaVisitasController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Gestión de Visitas"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Programa, confirma y gestiona las visitas a inmuebles"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Inicio" onAction="#volverAlInicio"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 13px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                               -fx-padding: 10 16 10 16;"/>
+                <Button text="+ Nueva Visita" onAction="#abrirFormularioNuevo"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 8; -fx-padding: 10 20 10 20;
+                               -fx-cursor: hand;"/>
+                <Button text="Confirmar" onAction="#confirmarVisita"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="Cancelar visita" onAction="#cancelarVisita"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="Marcar realizada" onAction="#marcarRealizada"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar" promptText="Buscar por ID..."
+                           prefWidth="200"
+                           style="-fx-background-radius: 8; -fx-padding: 8 12 8 12;
+                                  -fx-font-size: 13px;"/>
+                <Button text="Buscar" onAction="#buscarVisita"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 16 10 16; -fx-cursor: hand;"/>
+            </HBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 14 20 14 20;
+                         -fx-background-radius: 10;">
+                <Label text="Filtrar por:"
+                       style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="cmbEstado" promptText="Estado"
+                          prefWidth="150" style="-fx-font-size: 12px;"/>
+                <TextField fx:id="txtIdCliente" promptText="ID Cliente"
+                           prefWidth="130"
+                           style="-fx-font-size: 12px; -fx-background-radius: 6;"/>
+                <TextField fx:id="txtIdInmueble" promptText="Código Inmueble"
+                           prefWidth="150"
+                           style="-fx-font-size: 12px; -fx-background-radius: 6;"/>
+                <Button text="Aplicar" onAction="#aplicarFiltros"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 12px; -fx-background-radius: 6;
+                               -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+                <Button text="Limpiar" onAction="#limpiarFiltros"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 12px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 6;
+                               -fx-padding: 8 14 8 14;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Procesar siguiente" onAction="#procesarSiguiente"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white;
+                               -fx-font-size: 12px; -fx-background-radius: 6;
+                               -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+            </HBox>
+
+            <TableView fx:id="tablaVisitas" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="100"/>
+                    <TableColumn fx:id="colCliente" text="Cliente" prefWidth="120"/>
+                    <TableColumn fx:id="colInmueble" text="Inmueble" prefWidth="120"/>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="110"/>
+                    <TableColumn fx:id="colHora" text="Hora" prefWidth="90"/>
+                    <TableColumn fx:id="colAsesor" text="Asesor" prefWidth="120"/>
+                    <TableColumn fx:id="colEstado" text="Estado" prefWidth="120"/>
+                    <TableColumn fx:id="colObservaciones" text="Observaciones" prefWidth="180"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay visitas registradas"
+                           style="-fx-text-fill: #BDC8D1; -fx-font-size: 13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: white; -fx-padding: 12 30 12 30;
+                     -fx-border-color: #E0E4E8; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="lblTotal" text="Total: 0 visitas"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+            <Label fx:id="lblPendientes" text="Pendientes: 0"
+                   style="-fx-font-size: 12px; -fx-text-fill: #e67e22;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

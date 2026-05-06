@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaAlertasController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Alertas del Sistema"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Monitorea y gestiona las alertas generadas por la plataforma"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Inicio" onAction="#volverAlInicio"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 13px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                               -fx-padding: 10 16 10 16;"/>
+                <Button text="Ejecutar detecciones" onAction="#ejecutarDetecciones"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 8; -fx-padding: 10 20 10 20;
+                               -fx-cursor: hand;"/>
+                <Button text="Marcar revisada" onAction="#marcarRevisada"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="Procesar siguiente" onAction="#procesarSiguiente"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 14 20 14 20;
+                         -fx-background-radius: 10;">
+                <Label text="Filtrar por:"
+                       style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="cmbNivel" promptText="Nivel"
+                          prefWidth="130" style="-fx-font-size: 12px;"/>
+                <ComboBox fx:id="cmbTipo" promptText="Tipo"
+                          prefWidth="200" style="-fx-font-size: 12px;"/>
+                <ComboBox fx:id="cmbRevisada" promptText="Estado revisión"
+                          prefWidth="150" style="-fx-font-size: 12px;"/>
+                <Button text="Aplicar" onAction="#aplicarFiltros"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 12px; -fx-background-radius: 6;
+                               -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+                <Button text="Limpiar" onAction="#limpiarFiltros"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 12px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 6;
+                               -fx-padding: 8 14 8 14;"/>
+            </HBox>
+
+            <TableView fx:id="tablaAlertas" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="100"/>
+                    <TableColumn fx:id="colMensaje" text="Mensaje" prefWidth="260"/>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="110"/>
+                    <TableColumn fx:id="colNivel" text="Nivel" prefWidth="90"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="180"/>
+                    <TableColumn fx:id="colEntidad" text="Entidad" prefWidth="120"/>
+                    <TableColumn fx:id="colRevisada" text="Revisada" prefWidth="90"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay alertas registradas"
+                           style="-fx-text-fill: #BDC8D1; -fx-font-size: 13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: white; -fx-padding: 12 30 12 30;
+                     -fx-border-color: #E0E4E8; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="lblTotal" text="Total: 0 alertas"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+            <Label fx:id="lblPendientes" text="Sin revisar: 0"
+                   style="-fx-font-size: 12px; -fx-text-fill: #e74c3c;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaReportesController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Reportes y Estadísticas"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Análisis de zonas, asesores, clientes e inmuebles"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Inicio" onAction="#volverAlInicio"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 13px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                               -fx-padding: 10 16 10 16;"/>
+            </HBox>
+
+            <!-- Tarjetas de resumen -->
+            <HBox spacing="16">
+                <VBox prefWidth="180" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <Label text="TOTAL INMUEBLES"
+                           style="-fx-font-size: 10px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalInmuebles" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1abc9c;"/>
+                </VBox>
+                <VBox prefWidth="180" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <Label text="TOTAL CLIENTES"
+                           style="-fx-font-size: 10px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalClientes" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                </VBox>
+                <VBox prefWidth="180" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <Label text="TOTAL VISITAS"
+                           style="-fx-font-size: 10px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalVisitas" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #e67e22;"/>
+                </VBox>
+                <VBox prefWidth="180" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <Label text="TOTAL ASESORES"
+                           style="-fx-font-size: 10px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblTotalAsesores" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+                </VBox>
+                <VBox prefWidth="180" spacing="8"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <Label text="CLIENTES ACTIVOS"
+                           style="-fx-font-size: 10px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblClientesActivos" text="0"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Paneles de reportes -->
+            <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+                <!-- Ranking zonas -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Ranking de zonas"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Actualizar" onAction="#actualizarRankingZonas"
+                                style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                       -fx-font-size: 11px; -fx-background-radius: 6;
+                                       -fx-padding: 6 12 6 12; -fx-cursor: hand;"/>
+                    </HBox>
+                    <ListView fx:id="listaZonas" VBox.vgrow="ALWAYS"
+                              style="-fx-background-radius: 8;"/>
+                </VBox>
+
+                <!-- Ranking asesores -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Ranking de asesores"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Actualizar" onAction="#actualizarRankingAsesores"
+                                style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                       -fx-font-size: 11px; -fx-background-radius: 6;
+                                       -fx-padding: 6 12 6 12; -fx-cursor: hand;"/>
+                    </HBox>
+                    <ListView fx:id="listaAsesores" VBox.vgrow="ALWAYS"
+                              style="-fx-background-radius: 8;"/>
+                </VBox>
+
+                <!-- Clientes en negociación -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-padding: 20;
+                             -fx-background-radius: 10;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Alta probabilidad de cierre"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1B2A3B;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Actualizar" onAction="#actualizarCierres"
+                                style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                                       -fx-font-size: 11px; -fx-background-radius: 6;
+                                       -fx-padding: 6 12 6 12; -fx-cursor: hand;"/>
+                    </HBox>
+                    <ListView fx:id="listaCierres" VBox.vgrow="ALWAYS"
+                              style="-fx-background-radius: 8;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

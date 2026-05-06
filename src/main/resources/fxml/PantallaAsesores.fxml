@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="uniquindio.edu.co.plataformaproptech.ui.PantallaAsesoresController"
+            style="-fx-background-color: #F0F2F5;">
+
+    <top>
+        <VBox style="-fx-background-color: #1B2A3B; -fx-padding: 20 30 20 30;">
+            <Label text="Gestión de Asesores"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Registra, edita y consulta los asesores de la plataforma"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Button text="← Inicio" onAction="#volverAlInicio"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 13px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 8;
+                               -fx-padding: 10 16 10 16;"/>
+                <Button text="+ Nuevo Asesor" onAction="#abrirFormularioNuevo"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-font-weight: bold;
+                               -fx-background-radius: 8; -fx-padding: 10 20 10 20;
+                               -fx-cursor: hand;"/>
+                <Button text="Editar" onAction="#editarAsesor"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Button text="Eliminar" onAction="#eliminarAsesor"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 20 10 20; -fx-cursor: hand;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar" promptText="Buscar por ID..."
+                           prefWidth="200"
+                           style="-fx-background-radius: 8; -fx-padding: 8 12 8 12;
+                                  -fx-font-size: 13px;"/>
+                <Button text="Buscar" onAction="#buscarAsesor"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 13px; -fx-background-radius: 8;
+                               -fx-padding: 10 16 10 16; -fx-cursor: hand;"/>
+            </HBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 14 20 14 20;
+                         -fx-background-radius: 10;">
+                <Label text="Filtrar por:"
+                       style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtZona" promptText="Zona asignada"
+                           prefWidth="160"
+                           style="-fx-font-size: 12px; -fx-background-radius: 6;"/>
+                <TextField fx:id="txtEspecialidad" promptText="Especialidad"
+                           prefWidth="160"
+                           style="-fx-font-size: 12px; -fx-background-radius: 6;"/>
+                <Button text="Aplicar" onAction="#aplicarFiltros"
+                        style="-fx-background-color: #1B2A3B; -fx-text-fill: white;
+                               -fx-font-size: 12px; -fx-background-radius: 6;
+                               -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+                <Button text="Limpiar" onAction="#limpiarFiltros"
+                        style="-fx-background-color: transparent; -fx-text-fill: #7F8C9A;
+                               -fx-font-size: 12px; -fx-cursor: hand;
+                               -fx-border-color: #BDC8D1; -fx-border-radius: 6;
+                               -fx-padding: 8 14 8 14;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Ver Ranking" onAction="#verRanking"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white;
+                               -fx-font-size: 12px; -fx-background-radius: 6;
+                               -fx-padding: 8 14 8 14; -fx-cursor: hand;"/>
+            </HBox>
+
+            <TableView fx:id="tablaAsesores" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="100"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="180"/>
+                    <TableColumn fx:id="colCorreo" text="Correo" prefWidth="180"/>
+                    <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="120"/>
+                    <TableColumn fx:id="colEspecialidad" text="Especialidad" prefWidth="140"/>
+                    <TableColumn fx:id="colZona" text="Zona" prefWidth="120"/>
+                    <TableColumn fx:id="colCierres" text="Cierres" prefWidth="80"/>
+                </columns>
+                <placeholder>
+                    <Label text="No hay asesores registrados"
+                           style="-fx-text-fill: #BDC8D1; -fx-font-size: 13px;"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: white; -fx-padding: 12 30 12 30;
+                     -fx-border-color: #E0E4E8; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="lblTotal" text="Total: 0 asesores"
+                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C9A;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
