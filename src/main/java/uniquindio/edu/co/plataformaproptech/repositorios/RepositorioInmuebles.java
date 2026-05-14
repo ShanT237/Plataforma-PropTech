@@ -1,8 +1,8 @@
 package uniquindio.edu.co.plataformaproptech.repositorios;
 
-
 import uniquindio.edu.co.plataformaproptech.estructuras.ArbolBST;
 import uniquindio.edu.co.plataformaproptech.estructuras.ListaEnlazada;
+import uniquindio.edu.co.plataformaproptech.estructuras.Pila;
 import uniquindio.edu.co.plataformaproptech.estructuras.TablaHash;
 import uniquindio.edu.co.plataformaproptech.modelos.Inmueble;
 import uniquindio.edu.co.plataformaproptech.modelos.enums.EstadoInmueble;
@@ -16,13 +16,14 @@ public class RepositorioInmuebles {
 
     private TablaHash<String, Inmueble> tablaPorCodigo;
     private ArbolBST<Double> arbolPrecios;
-    private ListaEnlazada<Inmueble> historialCambios;
-    private ListaEnlazada<Inmueble> todosLosInmuebles; // ✅ lista auxiliar
+    // ✅ CORREGIDO: Pila en lugar de ListaEnlazada — permite undo/redo en O(1)
+    private Pila<Inmueble> historialCambios;
+    private ListaEnlazada<Inmueble> todosLosInmuebles;
 
     public RepositorioInmuebles() {
         this.tablaPorCodigo = new TablaHash<>(100);
         this.arbolPrecios = new ArbolBST<>();
-        this.historialCambios = new ListaEnlazada<>();
+        this.historialCambios = new Pila<>();
         this.todosLosInmuebles = new ListaEnlazada<>();
     }
 
@@ -30,7 +31,7 @@ public class RepositorioInmuebles {
         if (tablaPorCodigo.contiene(inmueble.getCodigo())) return;
         tablaPorCodigo.insertar(inmueble.getCodigo(), inmueble);
         arbolPrecios.insertar(inmueble.getPrecio());
-        todosLosInmuebles.agregar(inmueble); // ✅ guardamos en lista auxiliar
+        todosLosInmuebles.agregar(inmueble);
     }
 
     public Inmueble buscarPorCodigo(String codigo) {
@@ -54,7 +55,8 @@ public class RepositorioInmuebles {
     public boolean actualizar(Inmueble inmueble) {
         Inmueble existente = tablaPorCodigo.buscar(inmueble.getCodigo());
         if (existente == null) return false;
-        historialCambios.agregar(existente);
+        // ✅ apilar() en lugar de agregar() — el estado anterior queda en el tope
+        historialCambios.apilar(existente);
         arbolPrecios.eliminar(existente.getPrecio());
         tablaPorCodigo.insertar(inmueble.getCodigo(), inmueble);
         arbolPrecios.insertar(inmueble.getPrecio());
@@ -107,12 +109,24 @@ public class RepositorioInmuebles {
         return resultado;
     }
 
+    /**
+     * Deshace el último cambio restaurando el estado anterior desde la cima de la pila.
+     * Ahora es O(1) gracias a la Pila.
+     */
     public Inmueble deshacerUltimoCambio() {
         if (historialCambios.estaVacia()) return null;
-        int ultimo = historialCambios.getTamanio() - 1;
-        Inmueble anterior = historialCambios.obtener(ultimo);
-        historialCambios.eliminar(ultimo);
+        // ✅ desapilar() extrae el último estado en O(1)
+        Inmueble anterior = historialCambios.desapilar();
+        arbolPrecios.eliminar(tablaPorCodigo.buscar(anterior.getCodigo()).getPrecio());
         tablaPorCodigo.insertar(anterior.getCodigo(), anterior);
+        arbolPrecios.insertar(anterior.getPrecio());
+        for (int i = 0; i < todosLosInmuebles.getTamanio(); i++) {
+            if (todosLosInmuebles.obtener(i).getCodigo().equals(anterior.getCodigo())) {
+                todosLosInmuebles.eliminar(i);
+                todosLosInmuebles.agregar(anterior);
+                break;
+            }
+        }
         return anterior;
     }
 
